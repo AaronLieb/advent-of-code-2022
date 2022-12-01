@@ -25,6 +25,10 @@ void IOBoilerPlate() {
   cin.tie(0);
 }
 
+int atoi(const string& str) {
+  return atoi(str.c_str());
+}
+
 vs split(const string& line) {
   vs res;
   istringstream iss(line);

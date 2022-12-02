@@ -4,7 +4,10 @@
 using namespace std;
 
 void solve(const vs& lines, const vs& tokens, const vvs& both) {
-  
+  auto input = both;
+  for (auto x : both) {
+    
+  }
 }
 
 int main() {
@@ -17,6 +20,7 @@ int main() {
     getline(file, line);
     lines.pb(line);
     line_split = split(line);
+    if (!line_split.size()) continue;
     both.pb(line_split);
     for (auto token : line_split) {
       tokens.pb(token);

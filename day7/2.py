@@ -1,7 +1,6 @@
 with open("input.txt") as f:
     lines = f.readlines()
 
-
 class File:
     def __init__(self, name, size, parent):
         self.name = name
@@ -33,22 +32,23 @@ for line in lines[1:]:
             curr = curr.children[args[2]]
 
 
-cum_sum = 0
+MAX = 70000000-30000000
 
-def sizes(file):
-    global cum_sum
+smallest = MAX
+def sizes(file, check):
+    global smallest
     size = file.size
     for name, child in file.children.items():
-        size += sizes(child)
-    if (len(file.children) > 0 and size <= 100000):
-        print(file.name, size)
-        cum_sum += size
+        size += sizes(child, check)
+    if (check and len(file.children) > 0 and USED - size <= MAX):
+        if (size < smallest):
+            smallest = size
     return size
 
-sizes(root)
+USED = sizes(root, False)
+sizes(root, True)
 
-print(cum_sum)
-        
+print(smallest)
 
 
 
